@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -8,23 +9,43 @@
   <style>
     body {
       margin: 0;
-      background-color: #0d0d0d;
+      background: linear-gradient(to right, #0f0c29, #302b63, #24243e);
       color: #f2f2f2;
       font-family: 'Poppins', sans-serif;
     }
 
     header {
-      background: linear-gradient(90deg, #4a00e0, #8e2de2);
-      padding: 40px 20px;
+      background: linear-gradient(90deg, #ff0080, #7928ca);
+      padding: 50px 20px 80px;
       text-align: center;
       position: relative;
+      border-bottom-left-radius: 30px;
+      border-bottom-right-radius: 30px;
+      box-shadow: 0 0 20px #ff00ff;
     }
 
     header h1 {
       font-family: 'Orbitron', sans-serif;
-      font-size: 48px;
+      font-size: 50px;
       margin: 0;
       color: #fff;
+      text-shadow: 0 0 10px #ff00cc;
+      animation: glow 2s ease-in-out infinite alternate;
+    }
+
+    header p {
+      font-size: 18px;
+      color: #f5f5f5;
+      margin-top: 8px;
+    }
+
+    @keyframes glow {
+      from {
+        text-shadow: 0 0 10px #ff00cc;
+      }
+      to {
+        text-shadow: 0 0 20px #ff99ff, 0 0 30px #ff33cc;
+      }
     }
 
     .menu-btn {
@@ -33,33 +54,55 @@
       left: 20px;
       background: none;
       border: none;
-      color: white;
-      font-size: 28px;
       cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      z-index: 1000;
+    }
+
+    .menu-btn span {
+      width: 25px;
+      height: 3px;
+      background-color: white;
+      border-radius: 2px;
+      transition: all 0.3s ease;
+      animation: flicker 1.5s infinite alternate;
+    }
+
+    @keyframes flicker {
+      0% { opacity: 1; }
+      50% { opacity: 0.5; }
+      100% { opacity: 1; }
     }
 
     .side-menu {
       position: fixed;
       top: 0;
-      left: -250px;
-      width: 250px;
+      left: -260px;
+      width: 260px;
       height: 100%;
-      background-color: #1a1a1a;
-      padding-top: 60px;
+      background-color: #1f1f2e;
+      padding-top: 70px;
       transition: 0.3s;
       z-index: 999;
+      box-shadow: 4px 0 20px rgba(0, 0, 0, 0.5);
     }
 
     .side-menu a {
       display: block;
-      padding: 15px 25px;
-      color: #f2f2f2;
+      padding: 18px 30px;
+      color: #ffffff;
       text-decoration: none;
       font-weight: 600;
+      border-bottom: 1px solid #333;
+      transition: 0.3s;
     }
 
     .side-menu a:hover {
-      background-color: #333;
+      background-color: #353558;
+      color: #ffccff;
+      text-shadow: 0 0 10px #ff33cc;
     }
 
     .side-menu.open {
@@ -68,15 +111,15 @@
 
     .profile-img {
       width: 100%;
-      max-width: 500px;
+      max-width: 400px;
       display: block;
       margin: 30px auto;
       border-radius: 20px;
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.6);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.7);
     }
 
     .content {
-      max-width: 900px;
+      max-width: 1000px;
       margin: auto;
       padding: 20px;
       line-height: 1.8;
@@ -84,16 +127,40 @@
     }
 
     .content h2 {
-      color: #8e2de2;
+      color: #ff33cc;
+      margin-top: 40px;
       margin-bottom: 15px;
       font-family: 'Orbitron', sans-serif;
+      font-size: 26px;
+      text-shadow: 0 0 10px #ff33cc;
+    }
+
+    .content p {
+      text-align: justify;
+    }
+
+    ul {
+      list-style-type: square;
+      padding-left: 20px;
+    }
+
+    ul li {
+      margin-bottom: 10px;
     }
 
     footer {
       text-align: center;
-      padding: 20px;
-      color: #888;
-      font-size: 14px;
+      padding: 25px;
+      color: #fff;
+      font-size: 16px;
+      margin-top: 60px;
+      animation: blink 1s infinite;
+    }
+
+    @keyframes blink {
+      0% { opacity: 1; }
+      50% { opacity: 0.2; }
+      100% { opacity: 1; }
     }
   </style>
 </head>
@@ -106,47 +173,44 @@
   </div>
 
   <header>
-    <button class="menu-btn" onclick="toggleMenu()">⋮</button>
+    <button class="menu-btn" onclick="toggleMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
     <h1>Juice WRLD</h1>
-    <p>Legado de um Gênio do Emo Rap</p>
+    <p>O eterno astro do emo rap</p>
   </header>
 
   <img class="profile-img" src="https://blackstorage.store/midia/1744574536121.jpg" alt="Juice WRLD">
 
   <div class="content">
     <h2>Início da Vida</h2>
-    <p>
-      Juice WRLD, nome verdadeiro Jarad Anthony Higgins, nasceu em 2 de dezembro de 1998 em Chicago, Illinois. Ele foi criado principalmente por sua mãe, já que seus pais se separaram quando ele ainda era pequeno. Desde cedo, Juice teve contato com a música por meio de videogames e começou a aprender piano, guitarra e bateria ainda na infância.
-    </p>
+    <p>Jarad Anthony Higgins nasceu em 2 de dezembro de 1998, em Chicago. Desde cedo teve interesse por música e aprendeu a tocar diversos instrumentos. Ele cresceu ouvindo rock, punk e rap, o que influenciou fortemente seu estilo futuramente.</p>
 
-    <h2>Começo da Carreira Musical</h2>
-    <p>
-      Ele começou a fazer música durante o ensino médio, inicialmente usando o nome artístico JuiceTheKidd. Suas primeiras faixas foram publicadas no SoundCloud, onde ele ganhou atenção com a música "Forever". Em 2017, adotou o nome Juice WRLD, inspirado no filme "Juice" estrelado por Tupac Shakur.
-    </p>
+    <h2>Começo da Carreira</h2>
+    <p>No ensino médio começou a lançar músicas no SoundCloud, como "Forever". Depois, adotou o nome Juice WRLD, inspirado no filme "Juice", de Tupac.</p>
 
-    <h2>Ascensão ao Sucesso</h2>
-    <p>
-      Sua grande virada veio com a música "Lucid Dreams", lançada em 2018, que rapidamente explodiu nas paradas mundiais. Com sua mistura única de rap, rock e temas emocionais, Juice se destacou como uma das maiores revelações do emo rap. Seu álbum de estreia, *Goodbye & Good Riddance*, solidificou sua posição no cenário musical.
-    </p>
-
-    <h2>Colaborações e Projetos</h2>
-    <p>
-      Juice WRLD colaborou com grandes nomes como Travis Scott, Future, The Weeknd e Eminem. Seu projeto com Future, *WRLD on Drugs*, e o álbum *Death Race for Love* (2019) mostraram sua versatilidade e domínio criativo. Em 2020, após sua morte, foi lançado o álbum póstumo *Legends Never Die*, que quebrou recordes e emocionou fãs no mundo todo.
-    </p>
+    <h2>Sucesso Mundial</h2>
+    <p>"Lucid Dreams" foi o divisor de águas. O hit chegou ao top 2 da Billboard e colocou Juice nos holofotes. O álbum *Goodbye & Good Riddance* foi sucesso total, seguido por *Death Race for Love* e *WRLD on Drugs* com Future.</p>
 
     <h2>Morte Prematura</h2>
-    <p>
-      Em 8 de dezembro de 2019, apenas seis dias após seu aniversário de 21 anos, Juice WRLD faleceu após sofrer uma convulsão no aeroporto de Chicago. A causa foi uma overdose acidental de oxicodona e codeína. Sua morte chocou o mundo e gerou uma conversa profunda sobre saúde mental e abuso de substâncias.
-    </p>
+    <p>Em 8 de dezembro de 2019, Juice faleceu após uma convulsão causada por overdose acidental. O mundo do rap ficou em luto.</p>
 
-    <h2>Legado</h2>
-    <p>
-      Juice WRLD é lembrado como um artista que deu voz à dor de uma geração. Suas letras sinceras sobre ansiedade, amor e depressão conectaram milhões de fãs. Até hoje, suas músicas continuam a inspirar e consolar. Seu legado vive por meio de sua arte, fundações de apoio à saúde mental e seu impacto no rap moderno.
-    </p>
+    <h2>Legado e Pós-Morte</h2>
+    <p>Após sua morte, o álbum *Legends Never Die* foi lançado e bateu recordes. Em 2022, *Fighting Demons* trouxe mais músicas inéditas. Juice WRLD se tornou símbolo de luta contra ansiedade e vícios. Também foi lançado o documentário "Juice WRLD: Into the Abyss" pela HBO.</p>
+
+    <h2>Lançamentos Póstumos</h2>
+    <ul>
+      <li><strong>2020:</strong> Legends Never Die (álbum póstumo)</li>
+      <li><strong>2021:</strong> Into the Abyss (documentário)</li>
+      <li><strong>2022:</strong> Fighting Demons (edição deluxe)</li>
+      <li><strong>2023-2024:</strong> Músicas como "Go Hard 2.0", "The Light", "Face 2 Face" e colaborações com The Kid LAROI e Eminem</li>
+    </ul>
   </div>
 
   <footer>
-    © 2025 Juice WRLD Tribute | Desenvolvido com amor pelos fãs
+     © 2025 Juice WRLD Tribute | Desenvolvido por fãs
   </footer>
 
   <script>
