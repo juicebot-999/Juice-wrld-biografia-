@@ -1,224 +1,154 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Juice WRLD - Biografia</title>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <title>Os Bebelzinhos da 801</title>
   <style>
     body {
       margin: 0;
-      background: linear-gradient(to right, #0f0c29, #302b63, #24243e);
-      color: #f2f2f2;
-      font-family: 'Poppins', sans-serif;
+      padding: 0;
+      overflow: hidden;
+      font-family: monospace;
+      background: black;
+      color: #00ff00;
     }
 
-    header {
-      background: linear-gradient(90deg, #ff0080, #7928ca);
-      padding: 50px 20px 80px;
-      text-align: center;
-      position: relative;
-      border-bottom-left-radius: 30px;
-      border-bottom-right-radius: 30px;
-      box-shadow: 0 0 20px #ff00ff;
-    }
-
-    header h1 {
-      font-family: 'Orbitron', sans-serif;
-      font-size: 50px;
-      margin: 0;
-      color: #fff;
-      text-shadow: 0 0 10px #ff00cc;
-      animation: glow 2s ease-in-out infinite alternate;
-    }
-
-    header p {
-      font-size: 18px;
-      color: #f5f5f5;
-      margin-top: 8px;
-    }
-
-    @keyframes glow {
-      from {
-        text-shadow: 0 0 10px #ff00cc;
-      }
-      to {
-        text-shadow: 0 0 20px #ff99ff, 0 0 30px #ff33cc;
-      }
-    }
-
-    .menu-btn {
-      position: absolute;
-      top: 20px;
-      left: 20px;
-      background: none;
-      border: none;
-      cursor: pointer;
-      display: flex;
-      flex-direction: column;
-      gap: 5px;
-      z-index: 1000;
-    }
-
-    .menu-btn span {
-      width: 25px;
-      height: 3px;
-      background-color: white;
-      border-radius: 2px;
-      transition: all 0.3s ease;
-      animation: flicker 1.5s infinite alternate;
-    }
-
-    @keyframes flicker {
-      0% { opacity: 1; }
-      50% { opacity: 0.5; }
-      100% { opacity: 1; }
-    }
-
-    .side-menu {
+    canvas {
       position: fixed;
       top: 0;
-      left: -260px;
-      width: 260px;
-      height: 100%;
-      background-color: #1f1f2e;
-      padding-top: 70px;
-      transition: 0.3s;
-      z-index: 999;
-      box-shadow: 4px 0 20px rgba(0, 0, 0, 0.5);
-    }
-
-    .side-menu a {
-      display: block;
-      padding: 18px 30px;
-      color: #ffffff;
-      text-decoration: none;
-      font-weight: 600;
-      border-bottom: 1px solid #333;
-      transition: 0.3s;
-    }
-
-    .side-menu a:hover {
-      background-color: #353558;
-      color: #ffccff;
-      text-shadow: 0 0 10px #ff33cc;
-    }
-
-    .side-menu.open {
       left: 0;
+      z-index: -1;
     }
 
-    .profile-img {
-      width: 100%;
-      max-width: 400px;
-      display: block;
-      margin: 30px auto;
-      border-radius: 20px;
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.7);
-    }
-
-    .content {
-      max-width: 1000px;
-      margin: auto;
-      padding: 20px;
-      line-height: 1.8;
-      font-size: 18px;
-    }
-
-    .content h2 {
-      color: #ff33cc;
-      margin-top: 40px;
-      margin-bottom: 15px;
-      font-family: 'Orbitron', sans-serif;
-      font-size: 26px;
-      text-shadow: 0 0 10px #ff33cc;
-    }
-
-    .content p {
-      text-align: justify;
-    }
-
-    ul {
-      list-style-type: square;
-      padding-left: 20px;
-    }
-
-    ul li {
-      margin-bottom: 10px;
-    }
-
-    footer {
+    .titulo {
+      font-size: 40px;
+      font-weight: bold;
+      color: #00ff00;
+      animation: piscar 1s infinite;
+      text-shadow: 0 0 10px #00ff00;
       text-align: center;
-      padding: 25px;
-      color: #fff;
-      font-size: 16px;
-      margin-top: 60px;
-      animation: blink 1s infinite;
+      margin-top: 30px;
     }
 
-    @keyframes blink {
-      0% { opacity: 1; }
-      50% { opacity: 0.2; }
-      100% { opacity: 1; }
+    @keyframes piscar {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+
+    .simulador {
+      margin: 100px auto;
+      background: rgba(0, 255, 0, 0.1);
+      border: 2px solid #00ff00;
+      border-radius: 20px;
+      padding: 30px;
+      text-align: center;
+      width: 320px;
+      box-shadow: 0 0 15px #00ff00;
+    }
+
+    button {
+      padding: 15px 25px;
+      font-size: 18px;
+      background-color: #00ff00;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      color: black;
+      font-weight: bold;
+      margin-top: 10px;
+    }
+
+    #resultado {
+      margin-top: 20px;
+      font-size: 22px;
+      color: #00ff00;
+      transition: 0.5s;
+    }
+
+    .efeitoJoao {
+      animation: brilhoJoao 1s infinite alternate;
+      font-size: 26px;
+      color: lime;
+      text-shadow: 0 0 10px lime, 0 0 20px lime, 0 0 40px green;
+    }
+
+    @keyframes brilhoJoao {
+      from {
+        transform: scale(1);
+        opacity: 0.8;
+      }
+      to {
+        transform: scale(1.2);
+        opacity: 1;
+      }
     }
   </style>
 </head>
 <body>
+  <canvas id="matrixCanvas"></canvas>
 
-  <div class="side-menu" id="sideMenu">
-    <a href="https://www.instagram.com/joao.7wzl" target="_blank">Instagram do Criador</a>
-    <a href="https://chat.whatsapp.com/GyrkZYjrmaRBJM9o9jm4p1" target="_blank">Grupo do WhatsApp do Criador</a>
-    <a href="https://whatsapp.com/channel/0029VawudkuJP210oo5vls10" target="_blank">Canal de Memes no WhatsApp</a>
+  <div class="titulo">os bebelzinhos da 801</div>
+
+  <div class="simulador">
+    <h2>Sorteio da Pessoa Mais Perturbada da Sala</h2>
+    <p>Clique no botão e descubra quem é o mais perturbado!</p>
+    <button onclick="sortearVencedor()">Sortear</button>
+    <div id="resultado"></div>
   </div>
-
-  <header>
-    <button class="menu-btn" onclick="toggleMenu()">
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
-    <h1>Juice WRLD</h1>
-    <p>O eterno astro do emo rap</p>
-  </header>
-
-  <img class="profile-img" src="https://blackstorage.store/midia/1744574536121.jpg" alt="Juice WRLD">
-
-  <div class="content">
-    <h2>Início da Vida</h2>
-    <p>Jarad Anthony Higgins nasceu em 2 de dezembro de 1998, em Chicago. Desde cedo teve interesse por música e aprendeu a tocar diversos instrumentos. Ele cresceu ouvindo rock, punk e rap, o que influenciou fortemente seu estilo futuramente.</p>
-
-    <h2>Começo da Carreira</h2>
-    <p>No ensino médio começou a lançar músicas no SoundCloud, como "Forever". Depois, adotou o nome Juice WRLD, inspirado no filme "Juice", de Tupac.</p>
-
-    <h2>Sucesso Mundial</h2>
-    <p>"Lucid Dreams" foi o divisor de águas. O hit chegou ao top 2 da Billboard e colocou Juice nos holofotes. O álbum *Goodbye & Good Riddance* foi sucesso total, seguido por *Death Race for Love* e *WRLD on Drugs* com Future.</p>
-
-    <h2>Morte Prematura</h2>
-    <p>Em 8 de dezembro de 2019, Juice faleceu após uma convulsão causada por overdose acidental. O mundo do rap ficou em luto.</p>
-
-    <h2>Legado e Pós-Morte</h2>
-    <p>Após sua morte, o álbum *Legends Never Die* foi lançado e bateu recordes. Em 2022, *Fighting Demons* trouxe mais músicas inéditas. Juice WRLD se tornou símbolo de luta contra ansiedade e vícios. Também foi lançado o documentário "Juice WRLD: Into the Abyss" pela HBO.</p>
-
-    <h2>Lançamentos Póstumos</h2>
-    <ul>
-      <li><strong>2020:</strong> Legends Never Die (álbum póstumo)</li>
-      <li><strong>2021:</strong> Into the Abyss (documentário)</li>
-      <li><strong>2022:</strong> Fighting Demons (edição deluxe)</li>
-      <li><strong>2023-2024:</strong> Músicas como "Go Hard 2.0", "The Light", "Face 2 Face" e colaborações com The Kid LAROI e Eminem</li>
-    </ul>
-  </div>
-
-  <footer>
-     © 2025 Juice WRLD Tribute | Desenvolvido por fãs
-  </footer>
 
   <script>
-    function toggleMenu() {
-      const menu = document.getElementById('sideMenu');
-      menu.classList.toggle('open');
-    }
-  </script>
+    const alunos = [
+      "Eduardo",
+      "João",
+      "Leonardo",
+      "Evellyn",
+      "Todos",
+      "Samuel Rafael",
+      "Samuel Araújo"
+    ];
 
+    function sortearVencedor() {
+      const sorteado = alunos[Math.floor(Math.random() * alunos.length)];
+      const resultado = document.getElementById("resultado");
+
+      if (sorteado === "João") {
+        resultado.className = "efeitoJoao";
+        resultado.innerText = `JOÃO é o mais perturbado da sala!`;
+      } else {
+        resultado.className = "";
+        resultado.innerText = `${sorteado} é o mais perturbado da sala!`;
+      }
+    }
+
+    // Efeito Matrix
+    const canvas = document.getElementById('matrixCanvas');
+    const ctx = canvas.getContext('2d');
+
+    canvas.height = window.innerHeight;
+    canvas.width = window.innerWidth;
+
+    const letters = "abcdefghijklmnopqrstuvwxyz0123456789".split('');
+    const fontSize = 14;
+    const columns = canvas.width / fontSize;
+    const drops = Array(Math.floor(columns)).fill(1);
+
+    function drawMatrix() {
+      ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      ctx.fillStyle = "#0f0";
+      ctx.font = fontSize + "px monospace";
+
+      for (let i = 0; i < drops.length; i++) {
+        const text = letters[Math.floor(Math.random() * letters.length)];
+        ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+        if (drops[i] * fontSize > canvas.height || Math.random() > 0.975) {
+          drops[i] = 0;
+        }
+        drops[i]++;
+      }
+    }
+
+    setInterval(drawMatrix, 50);
+  </script>
 </body>
 </html>
